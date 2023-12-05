@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const GuestForm = ({ setRefresh }) => {
-  const [errorMessage, setErrorMessage] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -21,35 +21,26 @@ const GuestForm = ({ setRefresh }) => {
       if (res.status === 200) {
         console.log("Server response:", resJson);
         setRefresh((prev) => !prev);
+        event.target.reset();
       } else {
-        setErrorMessage("Some error occurred");
+        setErrorMessage(resJson.message);
+        console.log(resJson);
       }
     } catch (err) {
       console.log(err);
     }
   };
 
-  //     const form = new FormData(event.target);
-
-  //     fetch("http://localhost:9993/api/users", {
-  //       method: "POST",
-  //       body: form,
-  //     }).then((response) => {
-  //       if (response.ok) {
-  //         console.log(form.get("firstname"));
-  //         setRefresh((prev) => !prev);
-  //         event.target.reset();
-  //       } else {
-  //         response.json().then((data) => setError(data));
-  //       }
-  //     });
-  //   };
-
   return (
     <form
       onSubmit={handleSubmit}
       className="flex flex-col gap-4 p-4 max-w-[700px] mx-auto my-0"
     >
+      {errorMessage && (
+        <div className="p-5 bg-red-400 text-black font-bold text-center uppercase ">
+          {errorMessage}
+        </div>
+      )}
       <input
         type="text"
         name="firstname"
