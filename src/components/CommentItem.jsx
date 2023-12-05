@@ -1,6 +1,6 @@
 const CommentItem = ({ user }) => {
   return (
-    <div className="my-0 mx-auto bg-secondary min-w-[15rem] rounded-md">
+    <div className="my-0 mx-auto border-2 border-primary min-w-[15rem] rounded-md">
       <div>
         <div className="p-4">
           <p className="font-bold">{user.firstname}</p>
@@ -8,7 +8,7 @@ const CommentItem = ({ user }) => {
         </div>
         <div className="p-4">
           <p>write:</p>
-          <p className="p-4 bg-[#FFFFFF] rounded-sm">{user.text}</p>
+          <p className="p-4 bg-slate-300 text-black">{user.text}</p>
         </div>
       </div>
     </div>
