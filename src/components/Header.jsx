@@ -27,7 +27,7 @@ const Header = () => {
   return (
     <div>
       <h1 className="text-center text-primary p-8 text-4xl font-bold rounded-xl mx-auto">
-        PROPS Blog with API
+        PROPS Guestbook with API
       </h1>
       <label className="swap swap-rotate absolute right-6 top-8">
         <input
