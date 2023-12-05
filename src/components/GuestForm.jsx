@@ -1,6 +1,9 @@
 const GuestForm = () => {
-  const handleSubmit = () => {
-    console.log("hallo");
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.target);
+    // console.log(data);
+    // console.log(data.get("firstname"));
   };
 
   return (
