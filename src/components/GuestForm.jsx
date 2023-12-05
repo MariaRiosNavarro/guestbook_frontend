@@ -1,10 +1,49 @@
-const GuestForm = () => {
-  const handleSubmit = (event) => {
+import { useState } from "react";
+
+const GuestForm = ({ setRefresh }) => {
+  const [errorMessage, setErrorMessage] = useState(false);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.target);
-    // console.log(data);
-    // console.log(data.get("firstname"));
+    const form = new FormData(event.target);
+    const data = Object.fromEntries(form);
+
+    try {
+      let res = await fetch("http://localhost:9993/api/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      let resJson = await res.json();
+
+      if (res.status === 200) {
+        console.log("Server response:", resJson);
+        setRefresh((prev) => !prev);
+      } else {
+        setErrorMessage("Some error occurred");
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
+
+  //     const form = new FormData(event.target);
+
+  //     fetch("http://localhost:9993/api/users", {
+  //       method: "POST",
+  //       body: form,
+  //     }).then((response) => {
+  //       if (response.ok) {
+  //         console.log(form.get("firstname"));
+  //         setRefresh((prev) => !prev);
+  //         event.target.reset();
+  //       } else {
+  //         response.json().then((data) => setError(data));
+  //       }
+  //     });
+  //   };
 
   return (
     <form
@@ -26,7 +65,7 @@ const GuestForm = () => {
         className="px-4 py-2 rounded-md border-none"
       />
       <input
-        type="email"
+        type="text"
         name="email"
         id="email"
         placeholder="Your Email"
