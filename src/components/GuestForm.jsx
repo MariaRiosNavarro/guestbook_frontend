@@ -18,7 +18,7 @@ const GuestForm = ({ setRefresh }) => {
       });
       let resJson = await res.json();
 
-      if (res.status === 200) {
+      if (res.ok) {
         console.log("Server response:", resJson);
         setRefresh((prev) => !prev);
         event.target.reset();
@@ -34,10 +34,10 @@ const GuestForm = ({ setRefresh }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-4 p-4 max-w-[700px] mx-auto my-0"
+      className="flex flex-col gap-4 p-4 max-w-[650px] mx-auto my-0"
     >
       {errorMessage && (
-        <div className="p-5 bg-red-400 text-black font-bold text-center uppercase ">
+        <div className="p-5 bg-red-400 text-black font-bold text-center uppercase rounded-md">
           {errorMessage}
         </div>
       )}
