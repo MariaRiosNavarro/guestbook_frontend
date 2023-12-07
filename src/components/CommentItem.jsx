@@ -22,8 +22,10 @@ const CommentItem = ({ user }) => {
             {user.text}
           </p>
         </div>
-        <div>
-          <Link to={"/edit/" + user.id}>Edit</Link>
+        <div className="flex justify-center items-center m-4">
+          <Link className="btn btn-primary" to={"/edit/" + user.id}>
+            Edit
+          </Link>
         </div>
       </div>
     </div>

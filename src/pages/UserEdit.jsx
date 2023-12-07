@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../components/Header";
+import { Link } from "react-router-dom";
 
 const UserEdit = () => {
   const [editPost, setEditPost] = useState(null);
@@ -84,7 +85,16 @@ const UserEdit = () => {
                 className="file-input file-input-bordered file-input-primary w-full max-w-xs"
               />
             </div>
-            <input type="submit" value="SAVE" className="btn btn-primary" />
+            <div className="flex justify-center items-center gap-4">
+              <input type="submit" value="SAVE" className="btn btn-primary" />
+              <Link to="/">
+                <input
+                  type="submit"
+                  value="BACK"
+                  className="btn btn-secondary"
+                />
+              </Link>
+            </div>
           </form>
         </main>
       </>
