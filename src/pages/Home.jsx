@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { initialMockdata } from "../db/mockdata";
 
 const Home = () => {
-  const [users, setUsers] = useState(initialMockdata);
+  const [users, setUsers] = useState([initialMockdata]);
   // const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
