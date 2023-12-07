@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 
 const UserEdit = () => {
   const [editPost, setEditPost] = useState(null);
-  //   const [refresh, setRefresh] = useState(false);
+  const [refresh, setRefresh] = useState(false);
+  const [confirmDelete, setConfirmDelete] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
   const { id } = useParams();
 
@@ -13,7 +14,7 @@ const UserEdit = () => {
     fetch("http://localhost:9993/api/users/" + id)
       .then((response) => response.json())
       .then((data) => setEditPost(data));
-  }, []);
+  }, [refresh]);
 
   const handleEdit = (e) => {
     e.preventDefault;
@@ -25,11 +26,22 @@ const UserEdit = () => {
     }).then((response) => setRefresh((prev) => !prev));
   };
 
+  const handleConfirmDelete = () => {
+    setConfirmDelete((prev) => !prev);
+  };
+
+  const handleDelete = () => {
+    // fetch("http://localhost:9993/api/users/", {
+    //     method: "DELETE",
+    //     body: form,
+    //   }).then((response) => setRefresh((prev) => !prev));
+  };
+
   if (editPost) {
     return (
       <>
         <Header />
-        <main className="flex flex-col justify-center items-center m-4">
+        <main className="flex flex-col justify-center items-center m-4 gap-4">
           <section className="h-[400px] overflow-hidden w-[100%] max-w-[700px] p-8">
             <img
               className="h-[100%] w-[100%]"
@@ -76,25 +88,55 @@ const UserEdit = () => {
               defaultValue={editPost.text}
               className="px-4 py-2 rounded-md border-none"
             />
-            <div className="border border-primary p-4 rounded-md flex justify-center items-center gap-4">
+            <div className="border border-primary p-4 my-4 rounded-md flex justify-center items-center gap-4">
               <label htmlFor="img">Change the Picture?</label>
               <input
                 type="file"
                 name="img"
                 id="id"
-                className="file-input file-input-bordered file-input-primary w-full max-w-xs"
+                className="file-input file-input-bordered file-input-secondary w-full max-w-xs"
               />
             </div>
-            <div className="flex justify-center items-center gap-4">
-              <input type="submit" value="SAVE" className="btn btn-primary" />
-              <Link to="/">
+            <div className="flex justify-center items-center gap-4 mb-4">
+              <input
+                type="submit"
+                value="SAVE"
+                className="btn btn-secondary w-[50%]"
+              />
+              <Link to="/" className="w-[50%]">
                 <input
                   type="submit"
                   value="BACK"
-                  className="btn btn-secondary"
+                  className="btn btn-transparent border-4 border-secondary w-[100%]"
                 />
               </Link>
             </div>
+
+            {confirmDelete ? (
+              <div className="flex flex-col  justify-center items-center gap-4">
+                <p>Are You sure?</p>
+                <div className="flex justify-center items-center gap-4">
+                  <button
+                    className="btn btn-secondary"
+                    onClick={handleConfirmDelete}
+                  >
+                    NO
+                  </button>
+                  <button
+                    onClick={handleDelete}
+                    className="btn btn-error text-yellow-100"
+                  >
+                    DELETE
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <input
+                onClick={handleConfirmDelete}
+                value="DELETE"
+                className="btn btn-primary"
+              />
+            )}
           </form>
         </main>
       </>
