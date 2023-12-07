@@ -20,3 +20,7 @@ Api validation with joi in backend
 <img src="./public/img/readmed2.png" width="300px">
 <img src="./public/img/readmed3.png" width="300px">
 </div>
+
+install
+
+npm i uuid

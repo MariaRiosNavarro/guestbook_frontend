@@ -1,37 +1,37 @@
 export const initialMockdata = [
   {
     id: 124,
-    firstname: "name2",
+    firstname: "coder",
     lastname: "lastname2",
-    email: "email2@example.com",
-    text: "Lorem ipsum text2",
+    email: "code@haha.de",
+    text: "They say coding in CSS is therapeutic. Clearly, they've never tried to vertically align something in the center",
     bonus: true,
   },
 
   {
     id: 125,
-    firstname: "name3",
+    firstname: "css",
     lastname: "lastname3",
-    email: "email3@example.com",
-    text: "Lorem ipsum text3",
+    email: "css@css.de",
+    text: "Coding in CSS is like a walk in the park... if the park had hidden traps and the occasional surprise rollercoaster of browser compatibility issues.",
     bonus: true,
   },
 
   {
     id: 126,
-    firstname: "name4",
+    firstname: "bootcamp",
     lastname: "lastname4",
-    email: "email4@example.com",
-    text: "Lorem ipsum text4",
+    email: "opfer@boot.com",
+    text: "CSS is so amazing; it's like playing a game where you try to guess which property will actually work this time",
     bonus: true,
   },
 
   {
     id: 127,
-    firstname: "name5",
-    lastname: "lastname5",
+    firstname: "backend",
+    lastname: "dev@dev.it",
     email: "email5@example.com",
-    text: "Lorem ipsum text5",
+    text: "CSS, where 'simple' and 'straightforward' are just two words that haven't met each other in the same stylesheet yet",
     bonus: false,
   },
 
