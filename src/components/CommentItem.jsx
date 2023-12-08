@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 
 const CommentItem = ({ user }) => {
-  console.log(import.meta.env.VITE_BACKEND_URL + user.img);
+  console.log(import.meta.env.VITE_BACKEND_URL + "/" + user.img);
   return (
     <div className="card my-0 mx-auto border-2 border-primary w-[100%] rounded-md">
       <figure className="w-[100%] h-[250px]">
         <img
           className="w-[100%]"
-          src={import.meta.env.VITE_BACKEND_URL + user.img}
+          src={import.meta.env.VITE_BACKEND_URL + "/" + user.img}
           alt={user.lastname}
         />
       </figure>
