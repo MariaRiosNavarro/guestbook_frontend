@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import placeholder from "../assets/img/placeholder.jpg";
 
 const CommentItem = ({ user }) => {
   //placeholder handling
   const imgSrc = user.img
     ? import.meta.env.VITE_BACKEND_URL + "/" + user.img
-    : "../assets/img/placeholder.jpg";
+    : placeholder;
 
   // console.log("👹--------", import.meta.env.VITE_BACKEND_URL + "/" + user.img);
 

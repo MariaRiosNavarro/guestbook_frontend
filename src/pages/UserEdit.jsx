@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../components/Header";
 import { Link } from "react-router-dom";
+import placeholder from "../assets/img/placeholder.jpg";
 
 const UserEdit = () => {
   const [editPost, setEditPost] = useState(null);
@@ -15,6 +16,11 @@ const UserEdit = () => {
       .then((response) => response.json())
       .then((data) => setEditPost(data));
   }, [refresh]);
+
+  //placeholder for post without Picture
+  const imgSrc = user.img
+    ? import.meta.env.VITE_BACKEND_URL + "/" + editPost.img
+    : placeholder;
 
   const handleEdit = (e) => {
     e.preventDefault();
@@ -67,7 +73,7 @@ const UserEdit = () => {
             <section className="h-[400px] overflow-hidden w-[100%] max-w-[700px] p-8">
               <img
                 className="h-[100%] w-[100%] object-cover"
-                src={import.meta.env.VITE_BACKEND_URL + "/" + editPost.img}
+                src={imgSrc}
                 alt=""
               />
             </section>
