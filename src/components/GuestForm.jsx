@@ -7,7 +7,7 @@ const GuestForm = ({ setRefresh }) => {
     event.preventDefault();
     const form = new FormData(event.target);
 
-    fetch("http://localhost:9993/api/users", {
+    fetch(import.meta.env.VITE_BACKEND_URL + "/api/users", {
       method: "POST",
       body: form,
     }).then((response) => {

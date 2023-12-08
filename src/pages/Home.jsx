@@ -9,7 +9,7 @@ const Home = () => {
   const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:9993/api/users")
+    fetch(import.meta.env.VITE_BACKEND_URL + "/api/users")
       .then((response) => {
         if (response.ok) return response.json();
       })
