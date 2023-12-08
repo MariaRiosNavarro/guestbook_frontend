@@ -1,24 +1,43 @@
 import { useState } from "react";
+import placeholder from "../assets/img/placeholder.jpg";
 
 const GuestForm = ({ setRefresh }) => {
   const [errorMessage, setErrorMessage] = useState(null);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const form = new FormData(event.target);
+  const handleSubmit = async (event) => {
+    try {
+      event.preventDefault();
+      const form = new FormData(event.target);
 
-    fetch(import.meta.env.VITE_BACKEND_URL + "/api/users", {
-      method: "POST",
-      body: form,
-    }).then((response) => {
-      if (response.ok) {
-        setRefresh((prev) => !prev);
-        event.target.reset();
-        console.log("ok");
-      } else {
-        console.log("Ohh");
+      // If the user doesn't update a photo, use a placeholder
+      const imageFile = form.get("img");
+
+      // Check if imageFile is either null or a string (no file selected)
+      if (!imageFile || typeof imageFile === "string") {
+        // Set the path of the placeholder as the value for the "img" field
+        form.set("img", placeholder);
       }
-    });
+
+      const response = await fetch(
+        import.meta.env.VITE_BACKEND_URL + "/api/users",
+        {
+          method: "POST",
+          body: form,
+        }
+      );
+      const resJson = await response.json();
+      console.log(resJson);
+      if (response.status === 418) {
+        setErrorMessage(resJson.message);
+      }
+      setRefresh((prev) => !prev);
+      event.target.reset();
+    } catch (error) {
+      console.error("Error:", error);
+      setRefresh((prev) => !prev);
+      event.target.reset();
+      // setErrorMessage(error.message);
+    }
   };
 
   return (
