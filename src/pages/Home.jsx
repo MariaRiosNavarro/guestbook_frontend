@@ -6,7 +6,7 @@ import { initialMockdata } from "../db/mockdata";
 
 const Home = () => {
   const [users, setUsers] = useState([initialMockdata]);
-  // const [refresh, setRefresh] = useState(false);
+  const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     fetch("http://localhost:9993/api/users")
@@ -14,12 +14,12 @@ const Home = () => {
         if (response.ok) return response.json();
       })
       .then((data) => setUsers(data));
-  }, []);
+  }, [refresh]);
 
   return (
     <article>
       <Header />
-      <GuestForm />
+      <GuestForm setRefresh={setRefresh} />
       <CommentList users={users} />
     </article>
   );

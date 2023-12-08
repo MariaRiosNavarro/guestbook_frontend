@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const GuestForm = () => {
+const GuestForm = ({ setRefresh }) => {
   const [errorMessage, setErrorMessage] = useState(null);
 
   const handleSubmit = (event) => {
@@ -12,6 +12,8 @@ const GuestForm = () => {
       body: form,
     }).then((response) => {
       if (response.ok) {
+        setRefresh((prev) => !prev);
+        event.target.reset();
         console.log("ok");
       } else {
         console.log("Ohh");
