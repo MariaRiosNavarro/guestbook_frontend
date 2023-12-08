@@ -18,8 +18,13 @@ const GuestForm = ({ setRefresh }) => {
       );
       const resJson = await response.json();
       console.log(resJson);
+      //toast for validation issues
       if (response.status === 418) {
         setErrorMessage(resJson.message);
+        setTimeout(() => {
+          setErrorMessage("");
+          setRefresh((prev) => !prev);
+        }, 4000);
       }
       setRefresh((prev) => !prev);
       event.target.reset();
