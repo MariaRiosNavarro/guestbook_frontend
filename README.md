@@ -5,9 +5,9 @@
 
 All CRUD basic operations of persistent storage with Images works with the Deployed Server.
 
-Delete Confirmation Added & Enviromental Variables
+The validation in the server with Joi works in both the main form and the edit form, with error messages displayed through a Toast from the server
 
-Coming soon : Validation !
+Delete Confirmation Added & Enviromental Variables
 
 # [Render Deployment](https://guestbook-8u4k.onrender.com/)
 

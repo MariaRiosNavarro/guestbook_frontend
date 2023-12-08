@@ -4,7 +4,7 @@ import CommentItem from "./CommentItem";
 
 const CommentList = ({ users }) => {
   return (
-    <div className="grid grid-cols-2 gap-4 max-w-[600px] mx-auto my-0">
+    <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 max-w-[600px] mx-auto my-0">
       {users.map((user) => (
         <CommentItem key={uuidv4()} user={user} />
       ))}

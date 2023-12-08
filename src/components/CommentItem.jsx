@@ -8,8 +8,6 @@ const CommentItem = ({ user }) => {
     ? import.meta.env.VITE_BACKEND_URL + "/" + user.img
     : placeholder;
 
-  // console.log("👹--------", import.meta.env.VITE_BACKEND_URL + "/" + user.img);
-
   return (
     <div className="card my-0 mx-auto border-2 border-primary w-[100%] rounded-md">
       <figure className="w-[100%] h-[250px]">
