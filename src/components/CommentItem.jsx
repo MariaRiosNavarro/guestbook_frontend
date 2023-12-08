@@ -7,7 +7,7 @@ const CommentItem = ({ user }) => {
       <figure className="w-[100%] h-[250px]">
         <img
           className="w-[100%]"
-          src={"http://localhost:9993/" + user.img}
+          src={import.meta.env.VITE_BACKEND_URL + user.img}
           alt={user.lastname}
         />
       </figure>
