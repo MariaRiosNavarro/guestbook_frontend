@@ -40,9 +40,6 @@ const UserEdit = () => {
       );
       const resJson = await response.json();
       setDeleteMessage(resJson.message);
-      setTimeout(() => {
-        setDeleteMessage(null);
-      }, 15000);
     } catch (error) {
       console.error("Failed to delete article:", error.message);
     }
@@ -53,8 +50,17 @@ const UserEdit = () => {
       <>
         <Header />
         {deleteMessage ? (
-          <div className="p-5 bg-red-400 text-black font-bold text-center uppercase rounded-md">
-            {deleteMessage}
+          <div className="flex flex-col justify-center items-center gap-4">
+            <div className="p-5 bg-red-400 text-black font-bold text-center uppercase rounded-md w-[100%]">
+              {deleteMessage}
+            </div>
+            <Link to="/" className="w-[50%]">
+              <input
+                type="submit"
+                value="BACK"
+                className="btn btn-transparent border-4 border-secondary w-[100%]"
+              />
+            </Link>
           </div>
         ) : (
           <main className="flex flex-col justify-center items-center m-4 gap-4">
@@ -109,11 +115,6 @@ const UserEdit = () => {
                 />
               </div>
               <div className="flex justify-center items-center gap-4 mb-4">
-                <input
-                  type="submit"
-                  value="SAVE"
-                  className="btn btn-secondary w-[50%]"
-                />
                 <Link to="/" className="w-[50%]">
                   <input
                     type="submit"
@@ -121,6 +122,11 @@ const UserEdit = () => {
                     className="btn btn-transparent border-4 border-secondary w-[100%]"
                   />
                 </Link>
+                <input
+                  type="submit"
+                  value="SAVE"
+                  className="btn btn-secondary w-[50%]"
+                />
               </div>
 
               {confirmDelete ? (
