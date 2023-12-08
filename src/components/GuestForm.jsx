@@ -3,7 +3,7 @@ import { useState } from "react";
 const GuestForm = () => {
   const [errorMessage, setErrorMessage] = useState(null);
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     const form = new FormData(event.target);
 
