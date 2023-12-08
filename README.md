@@ -7,6 +7,8 @@ All CRUD basic operations of persistent storage works with the Deployed Server.
 
 Delete Confirmation Added & Enviromental Variables
 
+Coming soon : Validation !
+
 # [Render Deployment](https://guestbook-8u4k.onrender.com/)
 
 Add Image update
