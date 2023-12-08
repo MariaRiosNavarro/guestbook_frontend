@@ -11,7 +11,7 @@ const UserEdit = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch("http://localhost:9993/api/users/" + id)
+    fetch(import.meta.env.VITE_BACKEND_URL + "/api/users/" + id)
       .then((response) => response.json())
       .then((data) => setEditPost(data));
   }, [refresh]);
@@ -20,7 +20,7 @@ const UserEdit = () => {
     e.preventDefault();
     const form = new FormData(e.target);
     form.append("id", id);
-    fetch("http://localhost:9993/api/users/", {
+    fetch(import.meta.env.VITE_BACKEND_URL + "/api/users/", {
       method: "PUT",
       body: form,
     }).then((response) => setRefresh((prev) => !prev));
@@ -32,9 +32,12 @@ const UserEdit = () => {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch("http://localhost:9993/api/users/" + id, {
-        method: "DELETE",
-      });
+      const response = await fetch(
+        import.meta.env.VITE_BACKEND_URL + "/api/users/" + id,
+        {
+          method: "DELETE",
+        }
+      );
       const resJson = await response.json();
       setDeleteMessage(resJson.message);
       setTimeout(() => {
