@@ -128,11 +128,11 @@ const UserEdit = () => {
                       className="btn btn-secondary"
                       onClick={handleConfirmDelete}
                     >
-                      NO
+                      CANCEL
                     </button>
                     <button
                       onClick={handleDelete}
-                      className="btn btn-error text-yellow-100"
+                      className="btn bg-red-900 text-yellow-100 border border-red-400"
                     >
                       DELETE
                     </button>
