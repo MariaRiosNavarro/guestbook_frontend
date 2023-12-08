@@ -9,15 +9,6 @@ const GuestForm = ({ setRefresh }) => {
       event.preventDefault();
       const form = new FormData(event.target);
 
-      // If the user doesn't update a photo, use a placeholder
-      const imageFile = form.get("img");
-
-      // Check if imageFile is either null or a string (no file selected)
-      if (!imageFile || typeof imageFile === "string") {
-        // Set the path of the placeholder as the value for the "img" field
-        form.set("img", placeholder);
-      }
-
       const response = await fetch(
         import.meta.env.VITE_BACKEND_URL + "/api/users",
         {
@@ -33,7 +24,7 @@ const GuestForm = ({ setRefresh }) => {
       setRefresh((prev) => !prev);
       event.target.reset();
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Add error:", error);
       setRefresh((prev) => !prev);
       event.target.reset();
       // setErrorMessage(error.message);

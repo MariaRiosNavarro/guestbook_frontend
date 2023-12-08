@@ -7,6 +7,7 @@ import placeholder from "../assets/img/placeholder.jpg";
 const UserEdit = () => {
   const [editPost, setEditPost] = useState(null);
   const [refresh, setRefresh] = useState(false);
+  const [editMessage, setEditMessage] = useState(null);
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [deleteMessage, setDeleteMessage] = useState(null);
   const { id } = useParams();
@@ -22,14 +23,34 @@ const UserEdit = () => {
     ? import.meta.env.VITE_BACKEND_URL + "/" + editPost.img
     : placeholder;
 
-  const handleEdit = (e) => {
-    e.preventDefault();
-    const form = new FormData(e.target);
-    form.append("id", id);
-    fetch(import.meta.env.VITE_BACKEND_URL + "/api/users/", {
-      method: "PUT",
-      body: form,
-    }).then((response) => setRefresh((prev) => !prev));
+  //edit
+  const handleEdit = async (e) => {
+    try {
+      e.preventDefault();
+      const form = new FormData(e.target);
+      form.append("id", id);
+
+      const response = await fetch(
+        import.meta.env.VITE_BACKEND_URL + "/api/users/",
+        {
+          method: "PUT",
+          body: form,
+        }
+      );
+      const resJson = await response.json();
+
+      if (response.status === 418) {
+        setEditMessage(resJson.message);
+        setTimeout(() => {
+          setEditMessage("");
+          setRefresh((prev) => !prev);
+        }, 4000);
+      }
+      setRefresh((prev) => !prev);
+    } catch (error) {
+      console.error("Edit error:", error.message);
+      setRefresh((prev) => !prev);
+    }
   };
 
   const handleConfirmDelete = () => {
@@ -82,6 +103,11 @@ const UserEdit = () => {
               onSubmit={handleEdit}
               className="flex flex-col gap-4 p-4 max-w-[650px] mx-auto my-0"
             >
+              {editMessage && (
+                <div className="p-5 bg-red-400 text-black font-bold text-center uppercase rounded-md w-[100%]">
+                  {editMessage}
+                </div>
+              )}
               <h4 className="font-bold text-xl">Edit your data:</h4>
               <input
                 type="text"
