@@ -5,26 +5,20 @@
 
 All CRUD basic operations of persistent storage works with the Server.
 
+Delete Confirmation Added
+
 Add Image update
 
 Comming soon only validation
 
 # [Server&Api here](https://github.com/MariaRiosNavarro/guestbook_backend)
 
-# Light
+# Light & Dark
 
 <div>
-<img src="./public/img/readme.png" width="300px">
-<img src="./public/img/readme2.png" width="300px">
-<img src="./public/img/readme3.png" width="300px">
-</div>
-
-# Dark
-
-<div>
-<img src="./public/img/readmed.png" width="300px">
-<img src="./public/img/readmed2.png" width="300px">
-<img src="./public/img/readmed3.png" width="300px">
+<img src="./public/img/readme1_d.png" width="300px">
+<img src="./public/img/readme2_d.png" width="300px">
+<img src="./public/img/readme3_d.png" width="300px">
 </div>
 
 install
