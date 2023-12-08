@@ -61,9 +61,7 @@ const UserEdit = () => {
             <section className="h-[400px] overflow-hidden w-[100%] max-w-[700px] p-8">
               <img
                 className="h-[100%] w-[100%] object-cover"
-                src={
-                  import.meta.env.VITE_BACKEND_URL + "/uploads/" + editPost.img
-                }
+                src={import.meta.env.VITE_BACKEND_URL + "/" + editPost.img}
                 alt=""
               />
             </section>
