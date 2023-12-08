@@ -20,7 +20,3 @@ Comming soon only validation
 <img src="./public/img/readme2_d.png" width="300px">
 <img src="./public/img/readme3_d.png" width="300px">
 </div>
-
-install
-
-npm i uuid
